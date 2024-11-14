@@ -106,10 +106,21 @@ const VideoCarousel = () => {
         animate.restart();
       }
 
-      const animateUpdate = () =>{
-        animate.progress(videoRef.current[videoId].currentTime / 
-            hightlightsSlides[videoId].videoDuration)
-      }
+      // const animateUpdate = () =>{
+      //   animate.progress(videoRef.current[videoId].currentTime / 
+      //       hightlightsSlides[videoId].videoDuration)
+      // }
+
+      const animateUpdate = () => {
+        // Add a guard clause to check if video element exists
+        const videoElement = videoRef.current[videoId];
+        if (videoElement) {
+          animate.progress(
+            videoElement.currentTime / hightlightsSlides[videoId].videoDuration
+          );
+        }
+      };
+      
 
     if(isPlaying){
 
